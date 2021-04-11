@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="乙の方寸地">
 <meta property="og:description" content="Hi，我是乙夫，一名八零后程序员，在一家游戏公司从事研发工作。 成长于北方，少时的记忆多带有四季分明的痕迹。 走出校园后，一路向南，来到了一座通常只有夏冬两季的城市。 当漂泊与忙碌成为个人生活常态，内心愈加寻求一安放之地。 因此维护这一片“方寸地”，停留思考，记录瞬间，回忆过往。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-10T17:44:19.810Z">
+<meta property="og:updated_time" content="2021-04-11T01:32:13.762Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -45,6 +45,9 @@
     
     
 
+    
+    <link rel="stylesheet" href="https://cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css"/>
+    <script type="text/javascript" src="/lib/gittalk/gitalk.min.js"></script>
     
 </head>
 
@@ -135,6 +138,21 @@
 <!-- Disqus Comments -->
 
 
+
+    <script type="text/javascript">
+     const gitalk = new Gitalk({
+          clientID: 'c813ef37149435425528',
+          clientSecret: '5db9bf4941af53e73f1ef56f4033fd7de1b82198',
+          repo: 'blog-comment',
+          owner: 'iizink',
+          admin: ['iizink'],
+          id: "{{post.id}}", 
+          distractionFreeMode: false
+      });
+    if(document.getElementById('gitalk-container')){
+        gitalk.render('gitalk-container');
+    }
+    </script>
 
 
 </body>

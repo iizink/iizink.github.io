@@ -45,6 +45,9 @@
     
 
     
+    <link rel="stylesheet" href="https://cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css"/>
+    <script type="text/javascript" src="/lib/gittalk/gitalk.min.js"></script>
+    
 </head>
 
 <body class="max-width mx-auto px3 ltr">
@@ -179,6 +182,21 @@
 <!-- Disqus Comments -->
 
 
+
+    <script type="text/javascript">
+     const gitalk = new Gitalk({
+          clientID: 'c813ef37149435425528',
+          clientSecret: '5db9bf4941af53e73f1ef56f4033fd7de1b82198',
+          repo: 'blog-comment',
+          owner: 'iizink',
+          admin: ['iizink'],
+          id: "{{post.id}}", 
+          distractionFreeMode: false
+      });
+    if(document.getElementById('gitalk-container')){
+        gitalk.render('gitalk-container');
+    }
+    </script>
 
 
 </body>
