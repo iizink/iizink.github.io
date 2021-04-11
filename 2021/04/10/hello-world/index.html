@@ -270,6 +270,16 @@
 
 <!-- Baidu Analytics -->
 
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?d59cf57e3e209957085481b674739b23";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
 <!-- Disqus Comments -->
 
 
@@ -281,7 +291,7 @@
           repo: 'blog-comment',
           owner: 'iizink',
           admin: ['iizink'],
-          id: "{{post.id}}", 
+          id: document.location.pathname, 
           distractionFreeMode: false
       });
     if(document.getElementById('gitalk-container')){
