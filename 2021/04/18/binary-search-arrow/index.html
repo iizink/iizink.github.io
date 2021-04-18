@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="周六上午准备出门散步时，发现家中院子地上躺着一支箭，箭头带有钢尖，看起来杀伤力不小。不确定这支箭是附近熊孩子的失手乱入，还是有心之人的故意而为。出于防人之心不可无的想法，去看了监控。 现在安防设备一般会带有智能辅助功能，能够标场景中出现运动物体的时间段。可是容易受杂物干扰，时间轴大片被标记但往往只是树在风中摇动。于是，决定人肉翻视频。 首先选定了一个面向飞箭所在地面的监控，以确认箭何时开始出现。锁">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二分寻飞箭">
+<meta property="og:url" content="https://iiz.ink/2021/04/18/binary-search-arrow/index.html">
+<meta property="og:site_name" content="乙の方寸地">
+<meta property="og:description" content="周六上午准备出门散步时，发现家中院子地上躺着一支箭，箭头带有钢尖，看起来杀伤力不小。不确定这支箭是附近熊孩子的失手乱入，还是有心之人的故意而为。出于防人之心不可无的想法，去看了监控。 现在安防设备一般会带有智能辅助功能，能够标场景中出现运动物体的时间段。可是容易受杂物干扰，时间轴大片被标记但往往只是树在风中摇动。于是，决定人肉翻视频。 首先选定了一个面向飞箭所在地面的监控，以确认箭何时开始出现。锁">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-18T13:43:54.000Z">
+<meta property="article:modified_time" content="2021-04-18T16:17:14.967Z">
+<meta property="article:author" content="乙夫">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>二分寻飞箭 - 乙の方寸地</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/04/10/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://iiz.ink/2021/04/18/binary-search-arrow/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://iiz.ink/2021/04/18/binary-search-arrow/&text=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iiz.ink/2021/04/18/binary-search-arrow/&is_video=false&description=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=二分寻飞箭&body=Check out this article: https://iiz.ink/2021/04/18/binary-search-arrow/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://iiz.ink/2021/04/18/binary-search-arrow/&name=二分寻飞箭&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        二分寻飞箭
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">乙の方寸地</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-04-18T13:43:54.000Z" itemprop="datePublished">2021-04-18</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>周六上午准备出门散步时，发现家中院子地上躺着一支箭，箭头带有钢尖，看起来杀伤力不小。不确定这支箭是附近熊孩子的失手乱入，还是有心之人的故意而为。出于防人之心不可无的想法，去看了监控。</p>
+<p>现在安防设备一般会带有智能辅助功能，能够标场景中出现运动物体的时间段。可是容易受杂物干扰，时间轴大片被标记但往往只是树在风中摇动。于是，决定人肉翻视频。</p>
+<p>首先选定了一个面向飞箭所在地面的监控，以确认箭何时开始出现。锁定了大概时间在一周内，通过一个简单二分过程（操作上因为日黑光线质量而不是严格二分）定位到箭出现的关键时间：周四23:30:12左右。竟然是深夜放箭，心头一惊，莫非是真是平时不小心得罪了谁，半夜来报复警告。</p>
+<p>稳妥起见，又选定了一个朝向空中的监控，进行完整过程的确认。反复查看关键时间<strong>23:30:12</strong>附近数秒的视频。最终确认关键几帧——“23:30:10”——箭在一秒不到的时间内沿墙飞入，原来是隔壁的人在半夜练习射箭，真相大白后松了一口气。</p>
+<p>（飞箭事件的1/2速视频，白色框内为箭飞入的区域，若不仔细看很容易错过）</p>
+<video src="./arrow.mov" controls="controls" style="max-width: 100%; display: block; margin-left: auto; margin-right: auto;">
+your browser does not support the video tag
+</video>
+
+<p>与视频里一闪而过的飞箭相比，破案的过程，比较有趣</p>
+<ul>
+<li>对地摄像头：相当于索引数据，支持二分快速查找某个状态出现的时间（对数级复杂度）</li>
+<li>对空摄像头：相当于详细数据，通过第一步索引查到的时间，对事件详细的过程进行进一步的回溯。</li>
+</ul>
+
+  </div>
+</article>
+
+
+<div id="gitalk-container"></div>
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://iiz.ink/2021/04/18/binary-search-arrow/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://iiz.ink/2021/04/18/binary-search-arrow/&text=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://iiz.ink/2021/04/18/binary-search-arrow/&is_video=false&description=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=二分寻飞箭&body=Check out this article: https://iiz.ink/2021/04/18/binary-search-arrow/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://iiz.ink/2021/04/18/binary-search-arrow/&title=二分寻飞箭" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://iiz.ink/2021/04/18/binary-search-arrow/&name=二分寻飞箭&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 乙夫
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?d59cf57e3e209957085481b674739b23";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+<!-- Disqus Comments -->
+
+
+
+    <script type="text/javascript">
+     const gitalk = new Gitalk({
+          clientID: 'c813ef37149435425528',
+          clientSecret: '5db9bf4941af53e73f1ef56f4033fd7de1b82198',
+          repo: 'blog-comment',
+          owner: 'iizink',
+          admin: ['iizink'],
+          id: document.location.pathname, 
+          distractionFreeMode: false
+      });
+    if(document.getElementById('gitalk-container')){
+        gitalk.render('gitalk-container');
+    }
+    </script>
+
+
+</body>
+</html>
